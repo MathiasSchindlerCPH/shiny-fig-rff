@@ -1,9 +1,9 @@
 # Author:       Mathias Schindler
 # Date:         29-09-2020
-# Title:        Figur 1 til ????gteskabsm????nstre
-# Description:  Laver en Shiny-webapplikation til illustrering af ????gteskabsm????nstre
-#               for populationen af hhv. danskere, ikke-vestlige indvandrere og begge.
-
+# Title:        Make shiny dashboard for portfolio
+# Description:  Constructs shiny dashboard to illustrate marriage patterns for 
+#                natives and non-Western immigrants, respectively.
+#
 #*****************************************************************************
 
 # Preamble
@@ -93,7 +93,7 @@ rm(list = ls())
         #,
         #tableOutput("test_head"), tableOutput("test_tail"), 
         , 
-        textOutput("text_under")
+        uiOutput("text_under")
       )
     )
   )
@@ -189,7 +189,8 @@ rm(list = ls())
     })
     
     #3) Display link to script under plot
-    output$text_under <- renderText({paste("GitHub")})
+    git_url <- a("GitHub repo", href="https://github.com/MathiasSchindlerCPH/shiny-fig-rff/blob/main/app.R")
+    output$text_under <- renderUI({tagList("To inspect script used to construct this dashboard please refer to the designated ", git_url,".")})
   }
 }
 
